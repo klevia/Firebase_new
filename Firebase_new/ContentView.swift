@@ -462,11 +462,12 @@ struct ButtonView: View {
                                         }
                                        
                                     }){
-                                        ZStack(alignment: .leading){
-                                       RoundedRectangle(cornerRadius: 32)
+                                        HStack{
+                                       /*RoundedRectangle(cornerRadius: 32)
                                                 .foregroundColor(usersInterests[index].selected ? Color(hue: usersInterests[index].color.hue, saturation: usersInterests[index].color.saturation, brightness: usersInterests[index].color.brightness) : Color(hue: usersInterests[index].color.hue, saturation: usersInterests[index].color.saturation, brightness: usersInterests[index].color.brightness))
                                                 
-                                                .frame(width: 326,height: 88)
+                                                .frame(maxWidth: .infinity,minHeight: 88)
+                                                .padding(.horizontal,32)*/
                                                 
                                               
                                                 
@@ -474,8 +475,14 @@ struct ButtonView: View {
                                       
                                                 Text("\(usersInterests[index].name)")
                                                     .font(.system(size: 18))
+                                                    .lineLimit(1)
+                                                    .minimumScaleFactor(0.75)
+                                                    .allowsTightening(true)
                                                     .foregroundColor(Color.white)
-                                                    .padding()
+                                                    .padding(.leading,16)
+                                                    .frame(maxWidth: .infinity,alignment: .leading)
+                               
+                                                   
                                                 
                                                 AsyncImage(url: URL(string: usersInterests[index].link)){  image1 in
                                                     
@@ -485,11 +492,15 @@ struct ButtonView: View {
                                                         .aspectRatio(contentMode: .fit)
                                                         .foregroundColor(Color.gray)
                                                         .frame(width: 50, height: 50)
-                                                        .padding(.leading,240)
+                                                        .padding(.horizontal,16)
+                                                        .frame(alignment: .trailing)
+                                                    
                                                 }
                                             placeholder: {
                                                 ProgressView()
                                                     .frame(width: 50, height: 50)
+                                                    .padding(.horizontal,16)
+                                                    .frame(alignment: .trailing)
                                                 
                                             }
                                                 
@@ -498,7 +509,14 @@ struct ButtonView: View {
                                                 
                                             
                                         
-                                    }
+                                        }
+                                        .frame(maxWidth: .infinity,minHeight: 88)
+                                    
+                                        .background(RoundedRectangle(cornerRadius: 32)
+                                            .foregroundColor(usersInterests[index].selected ? Color(hue: usersInterests[index].color.hue, saturation: usersInterests[index].color.saturation, brightness: usersInterests[index].color.brightness) : Color(hue: usersInterests[index].color.hue, saturation: usersInterests[index].color.saturation, brightness: usersInterests[index].color.brightness))
+                                           )
+                                        .padding(.horizontal,32)
+                                    
                                         .overlay(
                                                RoundedRectangle(cornerRadius: 35)
                                                .stroke( Color(hue: usersInterests[index].color.hue, saturation: usersInterests[index].color.saturation, brightness: usersInterests[index].color.brightness), lineWidth: 5)
@@ -506,7 +524,7 @@ struct ButtonView: View {
                                                .opacity(usersInterests[index].selected ? 1 : 0)
                                                
                                            )
-                                        .frame(width: 340,height: 88)
+                                   
                                     }
                         
                                 }
