@@ -464,9 +464,12 @@ struct ButtonView: View {
                                     }){
                                         ZStack(alignment: .leading){
                                        RoundedRectangle(cornerRadius: 32)
-                                               
-                                                .foregroundColor(usersInterests[index].selected ? Color(.green) : Color(hue: usersInterests[index].color.hue, saturation: usersInterests[index].color.saturation, brightness: usersInterests[index].color.brightness))
+                                                .foregroundColor(usersInterests[index].selected ? Color(hue: usersInterests[index].color.hue, saturation: usersInterests[index].color.saturation, brightness: usersInterests[index].color.brightness) : Color(hue: usersInterests[index].color.hue, saturation: usersInterests[index].color.saturation, brightness: usersInterests[index].color.brightness))
+                                                
                                                 .frame(width: 326,height: 88)
+                                                
+                                              
+                                                
                                             
                                       
                                                 Text("\(usersInterests[index].name)")
@@ -496,7 +499,14 @@ struct ButtonView: View {
                                             
                                         
                                     }
-                                        .frame(width: 326,height: 88)
+                                        .overlay(
+                                               RoundedRectangle(cornerRadius: 35)
+                                               .stroke( Color(hue: usersInterests[index].color.hue, saturation: usersInterests[index].color.saturation, brightness: usersInterests[index].color.brightness), lineWidth: 5)
+                                               .shadow(color: .white, radius: 30, x: 0, y: 0)
+                                               .opacity(usersInterests[index].selected ? 1 : 0)
+                                               
+                                           )
+                                        .frame(width: 340,height: 88)
                                     }
                         
                                 }
