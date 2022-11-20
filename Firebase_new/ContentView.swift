@@ -467,15 +467,36 @@ struct ButtonView: View {
                                                
                                                 .foregroundColor(usersInterests[index].selected ? Color(.green) : Color(hue: usersInterests[index].color.hue, saturation: usersInterests[index].color.saturation, brightness: usersInterests[index].color.brightness))
                                                 .frame(width: 326,height: 88)
-                                        
-                                        Text("\(usersInterests[index].name)")
-                                                .font(.system(size: 18))
-                                            .foregroundColor(Color.white)
-                                            .padding()
                                             
-                                            //.clipShape(Capsule())
+                                      
+                                                Text("\(usersInterests[index].name)")
+                                                    .font(.system(size: 18))
+                                                    .foregroundColor(Color.white)
+                                                    .padding()
+                                                
+                                                AsyncImage(url: URL(string: usersInterests[index].link)){  image1 in
+                                                    
+                                                    image1
+                                                        .resizable()
+                                                        .renderingMode(.template)
+                                                        .aspectRatio(contentMode: .fit)
+                                                        .foregroundColor(Color.gray)
+                                                        .frame(width: 50, height: 50)
+                                                        .padding(.leading,240)
+                                                }
+                                            placeholder: {
+                                                ProgressView()
+                                                    .frame(width: 50, height: 50)
+                                                
+                                            }
+                                                
+                                                
+                                                
+                                                
+                                            
                                         
                                     }
+                                        .frame(width: 326,height: 88)
                                     }
                         
                                 }
