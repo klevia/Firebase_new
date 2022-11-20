@@ -523,7 +523,9 @@ struct ButtonView: View {
      
         Button(action: {
             finalArray = functions.arrangeArrays(elements: newElements, categories: categoriess)
-            showArray = true
+            if !newElements.isEmpty {
+                showArray = true
+            }
             
         }){
             ZStack{
